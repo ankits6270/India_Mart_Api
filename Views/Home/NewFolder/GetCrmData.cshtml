@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "CRM Data Fetch";
+}
+
+<h2>CRM Data Fetch</h2>
+
+<form asp-action="GetCrmData" method="get">
+    <div>
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" required />
+    </div>
+    <div>
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" required />
+    </div>
+    <p>Note: The maximum difference between the start and end dates is 7 days.</p>
+    <button type="submit">Fetch CRM Data</button>
+</form>
+
+<script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+        const startDate = new Date(document.getElementById('start_date').value);
+        const endDate = new Date(document.getElementById('end_date').value);
+
+        if ((endDate - startDate) / (1000 * 60 * 60 * 24) > 7) {
+            e.preventDefault();
+            alert("The date range should not exceed 7 days.");
+        }
+    });
+</script>

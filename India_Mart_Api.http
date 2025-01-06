@@ -1,0 +1,6 @@
+@India_Mart_Api_HostAddress = http://localhost:5171
+
+GET {{India_Mart_Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
